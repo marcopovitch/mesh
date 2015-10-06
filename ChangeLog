@@ -1,0 +1,351 @@
+1.0  ==========================================================
+     Objectives : 
+     	- provides mesh basic tools for : ray2mesh / gimbos / lsqrsolve
+	- provides methods to manage xml output
+	- metacell importation
+
+* Jeu mai 17 14:02:27 CEST 2007 - marc
+ - bug fixed for directory tag in xml file
+
+* Jeu fev  1 15:05:55 CET 2007 - marc
+ - change the way to count memory used on MacOSX (rsize/vsize)
+
+* Fri Jun 23 13:30:47 CEST 2006 - marc
+ - version 1.0pre9
+ - import2mesh_sco_file score allocation fixed
+ - port "memory used" to MacOSX
+
+* Tue Sep 27 14:44:49 CEST 2005 - marc
+ - add to metacell data structure the real score rather then the comparison
+   score
+
+* Sun Sep 11 19:16:56 CEST 2005 - marc
+  - offset minor bug fixed
+  - fixed modulo argument in offset computation
+  - small bugs fixed
+
+* Sat Sep  3 09:38:36 CEST 2005 - marc
+  - version 1.0pre8
+  - bug fixed: lat-unit and lon-unit wasn't used for offset computation
+
+* mer jui 20 11:05:09 CEST 2005 - marc
+  - mesh_split create a full sub-mesh (layer added)
+
+* mer avr  6 15:43:25 CEST 2005 - marc
+  - version 1.0pre7
+  - convert float to double in mesh_parameter_t structure, because of float
+    rounded error.
+
+* dim avr 17 11:58:47 CEST 2005 - marc
+  - version 1.0pre7
+  - reworked mesh_cellinfo_facehit_get(), 
+   value returned depends on  the two cells given as argument
+  	* -2 if the two cells are equals
+	* -1 if the two cells haven't any face in common
+	* face_id if the cells are adjacents
+
+* Fri Apr  1 16:33:17 CEST 2005 - marc
+  - add mesh->nb_total_metacell : the number of metacell loaded into the mesh
+  - get_north_direction fixed
+	
+* lun mar 21 18:01:19 CET 2005 - marc
+  - IRM importation completed
+  - metacell neighbourhood implemented
+  - export metacell to VTK ! Yes!
+
+* dim mar 20 21:37:55 CET 2005 - marc
+  - cell pole link fixed !
+  - starting IRM importation (irregular mesh)
+
+* mar mar 15 15:51:40 CET 2005 - marc
+  - re-implement link between layers whith same "cell size".
+    Layer link with different cell size, is not yet functional.
+	
+* jeu mar  3 15:58:57 CET 2005 - marc
+  - version 1.0pre6
+  - API change mesh_cellinfo_raw_dump() -> mesh_cellinfo_write_sco()
+  - mesh_cellinfo_write_sco() returns the nb of non null cells
+  - add mesh_cellinfo_get_max_ray_id() which returns the max ray id in
+    the light mesh
+
+* ven fév 18 01:13:36 CET 2005 - marc
+  - free partialy points and cell in free_mesh() [to be fixed]
+	
+* jeu fév  3 17:20:39 CET 2005 - marc
+  - version 1.0pre5
+  - moved point2cell, which_layer  from ray2mesh to mesh
+  - api changed, added "mesh_cellinfo" prefix to some function
+
+* mer déc  1 19:04:56 CET 2004 - marc
+  - strtok need a mmap with PROT_WRITE flag set
+  - mesh_cellinfo_rayids_increment returns the nb of cells processed
+  
+* mar nov 30 15:19:47 CET 2004 - marc
+  - version 1.0pre4
+  - change mesh_cellinfo_raw_dump() prototype
+
+* lun nov 22 10:46:20 CET 2004 - marc
+  - version 1.0pre3
+  - remove use of TABPOINT3D and CELLTAB
+
+* mer nov 17 15:22:52 CET 2004 - marc
+  - add evt section : evt file tracks all rays associated with the same event,
+    used by lsqrsolve during ACH tomographic inversion.
+* mar nov  9 18:11:46 CET 2004 - marc
+  - in xml output longitude is not anymore  greater than 360 degres 
+* lun nov  8 17:25:14 CET 2004 - marc
+  - add unlinearized cell id
+  - version 1.0pre2
+
+* mar oct 19 15:47:31 CEST 2004 - marc
+  - linearize cell ID fixed
+* ven oct 15 11:49:39 CEST 2004 - marc
+  - doc++
+  - add methods to manage xml output
+* jeu oct 14 17:01:13 CEST 2004 - marc
+  - add mesh2xml to write an xml file of the current mesh
+* mer oct 13 16:48:13 CEST 2004 - marc
+  - version 1.0pre1
+  - libmesh can read xml mesh files with associated data file such as
+    r2m, sco, irm, sparse, res files.
+  - mesh->data deeply reworked
+  
+
+0.9  ==========================================================
+     Objectives : - automatic offset computation in slice mode
+
+0.9.3 ---------------------------------------------------------
+
+* sam oct  9 22:51:31 CEST 2004 - marc
+  - rintf replaced by rint , drem replaced by remainder on solaris
+    (drem and rintf unavailable on solaris)
+
+* jeu oct  7 11:29:02 CEST 2004 - marc
+  - uniformize r2m and sco header
+* mer oct  6 16:03:48 CEST 2004 - marc
+  - removed bug introduced previously : mesh->ncells and layer->ncells i
+    were badly initialized
+  - ncells and npoints -> long int
+* lun oct  4 14:05:43 CEST 2004 - marc
+  - move linearize_cell_id() from ray2mesh to libmesh (use the
+    first available layer to get info)
+  - compute nb_cells in layers/mesh when initializing the mesh
+    rather than wait for make_mesh()
+  - keep the max rayid in the mesh structure
+
+0.9.2 ---------------------------------------------------------
+* mer sep  8 12:11:21 CEST 2004 - marc
+  - undo previous change 
+  - mesh_cellinfo_length_feed can write length info into a file,
+    required by ray2mesh for the "direct problem" : OBSOLETE
+
+0.9.1 ---------------------------------------------------------
+
+* mar jun  8 10:24:23 CEST 2004 - marc
+  - remove score alloc when importing r2m files
+
+* mer mai 26 23:36:58 CEST 2004 - marc
+  - mesh_split create files (-b option)
+
+* mar mai 25 13:13:25 CEST 2004 - marc
+  - add cell->selected, needed for gimbos
+
+* lun mai 24 11:24:10 CEST 2004 - marc
+  - move_in_mesh return null if the "move" fails
+
+
+0.9.0 ---------------------------------------------------------
+* ven mai  7 12:06:14 CEST 2004 - marc
+  - add struct overlap_t
+* jeu mai  6 01:47:30 CEST 2004 - marc
+  - overlapping and offset computation 
+* ven avr 30 22:43:18 CEST 2004 - genaud
+  - added mesh_xml_data_string() 
+* mer avr 28 12:07:38 CEST 2004 - marc
+  - change xml structure
+  - add mesh->data to import data into the mesh
+
+0.8  ==========================================================
+     Objectives : - work with ray2mesh-0.11.x
+
+  
+0.7 ===========================================================
+    Objectives : - cell definition uniformisation with ray2mesh
+                 - add more importation modules
+
+0.7.4 ---------------------------------------------------------
+* mar avr 20 15:37:37 CEST 2004 - marc
+  - when importing r2m or sco file, cell->id was'nt updated in slice mode
+* ven fév  6 09:49:24 CET 2004 - marc
+  - select_mesh_layer bug fixed
+* mar jan 20 16:37:24 CET 2004 - marc
+  - add select_mesh_layer 
+* lun jan 12 17:06:20 CET 2004 - marc
+  - move METACELL_MAXSIZE defintion to gimbos package
+* jeu jan  8 10:37:06 CET 2004 - marc
+  - add/modify structures for gimbos stuff
+0.7.3 ---------------------------------------------------------
+* mer nov  5 10:12:04 CET 2003 - genaud
+  - added a pkgconfig conf file libmesh.pc. 
+* ven sep 26 16:38:36 CEST 2003 - genaud
+  - new function get_face_vertices()
+  - cut dependence with ray, due to include <ray/coord.h> in import.c :
+    we now have convert_coord.h for that.
+0.7.2 ---------------------------------------------------------
+* lun sep 22 11:30:18 CEST 2003 - marc
+  - doc++ slice mode
+* dim sep 21 12:58:11 CEST 2003 - marc
+  - bug fixed in export2vt.c when a layer is not requested
+* jeu sep 11 11:56:10 CEST 2003 - marc
+  - import sco, score bug fixed
+* mer sep 10 10:35:10 CEST 2003 - marc
+  - import r2m now accepts to squiz some layers, when using -b -e flags
+* mar sep  9 16:05:07 CEST 2003 - marc
+  - import sco  bug fixed
+  - change proto of mesh_init_from_memory 
+  - add to mesh_t a filename
+* mar sep  9 14:33:32 CEST 2003 - genaud
+  - add a mesh_split utility to produce sub-mesh descriptions
+0.7.1 ---------------------------------------------------------
+
+* lun sep  8 18:02:20 CEST 2003 - marc
+  - replace 's' --start-layer option, with 'b' --begin-layer
+  - add 's' --slice-mode option for slice mode, 
+  - sco and r2m file must have format=sco|r2m defined in the file's header
+  - add import file in slice mode, use offset tag in the file's header
+  - doc++
+* mer sep  3 23:07:58 CEST 2003 - marc
+  - fixed broken cell->id.{x,y,z}
+* sam aoû 30 23:43:49 CEST 2003 - marc
+  - remove unsigned type in coord_z3_t (produces bugs in ray2mesh;point2cell)
+* ven aoû 22 10:35:09 CEST 2003 - marc
+  - doc : import & sco/r2m file format
+  - check format of imported file to avoid problems when one forget to put -r
+    flags on the cmd line :)
+* jeu aoû 21 18:10:37 CEST 2003 - marc
+  - add import2mesh_r2m_file
+  - add -r option to switch between sco/r2m import mode
+  - doc: describe sco/r2m file format
+0.7.0 ---------------------------------------------------------
+* mar aoû 19 11:48:38 CEST 2003 - marc
+  - change {UP,DOWN,EAST,WEST} to {UP,DOWN,EAST,WEST}_D 
+    to avoid conflicts with ray package.
+  - doc++
+* lun aoû 18 16:51:44 CEST 2003 - marc
+  - merge cell definition with ray2mesh
+  - add cell.h to documentation
+  
+
+0.6 ===========================================================
+    Objective : port to use libxml2
+0.6.3 ---------------------------------------------------------
+* mar déc 17 11:08:10 CET 2002 - genaud
+  - add the forgotten  {const,extern}.h shipped with libmesh headers files
+0.6.2 ---------------------------------------------------------
+* lun déc  2 15:53:17 CET 2002 - marc
+  - add option -l for 'use log scale' when importing r2m file
+* lun déc  2 13:51:00 CET 2002 - genaud
+  - automatic documentaiton generation packaged
+0.6.1 ---------------------------------------------------------
+* jeu nov 28 16:31:32 CET 2002 - genaud
+  - pkg-config customized invokation (for Irix)
+  - removed <libintl.h> include 
+  - completed export_vtk.h
+0.6.0 ---------------------------------------------------------
+* ven nov 15 10:08:18 CET 2002 - genaud
+   - option -v/--version displays mesh and libmesh version
+* ven nov 15 09:57:00 CET 2002 - marc
+    -add lib version info
+* mer nov 13 17:36:10 CET 2002 - genaud
+    - port to use libxml2
+    - `xml-config` disappears and `pkg-config libxml-2.0` replaces it in
+       Makefile.am
+0.5 ============================================================
+0.5 Objectives : a debugged and portable libmesh
+0.4.99 --------------------------------------------------------
+
+* mar oct 29 15:43:34 CET 2002 - marc
+  - mesh_init : rounding values fixed
+* mer oct 23 11:12:49 CEST 2002 - marc
+  - better check from xml parameters
+  - add usage of -i option (--help)
+* mar jun 18 11:10:37 CEST 2002 - genaud
+  - some repackaging work to adapt to automake-1.6 and autoconf-2.5
+    (type autoreconf instead of autogen.sh)
+
+0.4.3 ---------------------------------------------------------
+* jeu jun  6 16:28:23 CEST 2002 - marc
+  - xml buffer must be NULL terminated in mesh_init, not true 
+    when using mmap. Fixed.
+  - add xmlFreeDoc (doc) in mesh_init.c
+  - add free_mesh
+* mer jun  5 16:58:58 CEST 2002 - marc
+  - possibility to import several files which are not overlaping each other
+    use command option -i file1,file2,file3
+* mer avr 24 14:56:58 CEST 2002 - marc
+  - import2mesh_cell_data multiple read fixed
+  - nullify score array fixed
+* mer avr  3 14:39:11 CEST 2002 - genaud
+  - removed dependencies against glib 
+    (build on SunOS with just popt includes not being found)
+0.4.2 ---------------------------------------------------------
+0.4.2 Objectives : packaged as libmesh + mesh utility
+
+* lun mar 18 18:20:37 CET 2002 - marc
+  - sync with ray2mesh score file format *change* (raw r2m file).
+    First line contains hown many scores there are, and names
+    of this score. This names are integrated in VTK file (cell_data)
+* Fri Feb 15 11:11:14 CET 2002 - genaud
+  - moved VERBOSE,TABPOINT3D,...,DIRECTION declaration to mesh_init.c
+    and made these extern in main.c by including extern.h
+  - package bug fix : main.o was included in libmesh, preventing from
+    building a new lib that would wish to include libmesh
+0.4.1 ---------------------------------------------------------
+* jeu fév 14 18:03:01 CET 2002 - genaud
+  - mesh prints version number when invoking mesh -h
+* mer jan 23 21:06:41 CET 2002 - genaud
+  -removed mesh_init() to split it into mesh_init_from_file()
+   and mesh_init_from_memory() which refer to parsing xml from
+   a file or from a string. load_file_to_memory() is provided
+   to load and store the xml file as a string. Will be used to
+   pass the xml mesh desc. to remote MPI processes.
+0.4 ------------------------------------------------------------
+* sam déc 15 11:03:27 CET 2001 - genaud
+  - package reworking to build rpms
+  - changed package name from mesh to libmesh (AC_INIT_AUTOMAKE)
+* mer nov 28 11:01:15 CET 2001 - marc
+  - mesh_init doesn't exit anymore but return NULL if it fails
+  - verbosify
+* mar nov 27 11:00:23 CET 2001 - genaud
+   - package mesh as libmesh (first try) 
+* mar nov 27 16:13:05 CET 2001 - marc
+  - don't dump score in vtk if no importfile was given
+  - remove default options
+  - verbosify
+* mar nov 27 11:00:23 CET 2001 - genaud
+   - package mesh as a library (libmesh.so) + keep a "mesh" binary 
+   - moved xml files (previously in src/xml) to share/ 
+
+0.3 ============================================================
+    0.3 Objectives : layer link ? (might skip to 0.4 directly) 
+    ------------------------------------------------------------
+
+
+0.2 ============================================================
+    0.2 Objectives : Bugfix release after intensive tests
+    ------------------------------------------------------------
+* ven nov 23 11:13:02 CET 2001 - marc
+  - use fmod for check_cell_size
+  - ok for score importation on selected layer (switch -s -e)
+* mer nov 21 15:57:14 CET 2001 - marc
+  - ok for score importation 
+  - ok for multiple score in vtk file
+  - add -d (debug) 
+
+0.1 ============================================================
+* mar nov 20 19:00:09 CET 2001 - marc
+  - add cells's score importation
+  - to do : patch vtk dump to allow several score
+ 
+0.0 ============================================================
+

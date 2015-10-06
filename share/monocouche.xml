@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<mesh      lat-unit-size="90" lon-unit-size="90"
+	     lat-min="-90" lat-max="90"
+	     lon-min="0"   lon-max="360">
+<model>	     
+        <layer name="mono-couche" zstart="2000" zend="5000" lat-unit="1" lon-unit="1" />
+</model>
+
+</mesh>

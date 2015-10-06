@@ -1,0 +1,23 @@
+PACKAGE=mesh-on-seven
+
+#------- set cc -64 to get 64 bits binaries------ 
+#CC = cc -64
+CC = cc 
+
+LDFLAGS=`glib-config --libs` `xml-config --libs` -lpopt -lintl -lm
+CFLAGS =-DPACKAGE="\"$(PACKAGE)"\" -DVERSION="\"$(VERSION)"\"\
+        -DLOCALEDIR=\"\"\
+        -g `glib-config --cflags` `xml-config --cflags`
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+OBJS_MESH = cell.o export_vtk.o main.o mesh.o point3d.o
+
+mesh:$(OBJS_MESH)
+	$(CC) $(CFLAGS) $(OBJS_MESH) $(LDFLAGS) -o $@
+
+all: mesh 
+
+clean:
+	rm -f $(OBJS_MESH) *~ core mesh

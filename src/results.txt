@@ -1,0 +1,17 @@
+nb_couches	plat	plon	nb_points	nb_cells	time0	time1	time2		time3	vtk_file_(Mo)
+11		1.0	1.0	 777600	 712800	0:18	0:35 	0:15	            63	
+11		0.9	0.9	 960000	 880000	0:22	                        78
+11		0.6	0.6	2160000	1980000	0:47	0:53	1:41(*)/1:43	0:46	186
+11		0.5	0.5	3110400	2851200	1:09	12:14	   /2:30  	1:08	271
+11          0.4   0.4   4860000     4455000	1:53		5:54/3:57	1:52 	429
+                
+time0  = nilgiri (2 PIII 1Ghz)
+time1  = pellinore+vtkfile (2 PIII 0.8Ghz)
+time2  = seven+vtkfile	(gcc+R12000) / seven+vtkfile  (cc+R12000)	
+time3  = seven  (gcc+R12000)
+
+(*) 5:07 sur R10000
+
+sur seven, en 32 bits, assert memory failed en 0.3x0.3 a
+** Creating mesh for layer(8) 'layer 9' [2740.00,2889.00] - Assertion failed: tabcell->tab, file cell.c, line 754
+

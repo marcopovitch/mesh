@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<mesh        lat-unit-size="10" lon-unit-size="10"
+	     lat-min="-90" lat-max="90"
+	     lon-min="0"   lon-max="360">
+
+<model>
+<layer name="croute-manteau" zstart="0" zend="2889" lat-unit="1" lon-unit="1" />
+<layer name="noyau ext"   zstart="2889" zend="5153" lat-unit="1" lon-unit="1" />
+<layer name="noyau int"   zstart="5153" zend="6371" lat-unit="1" lon-unit="1" />
+</model>
+
+</mesh>

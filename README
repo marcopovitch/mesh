@@ -1,0 +1,31 @@
+
+
+Initial mesh
+============
+
+      <------ NLAYERS -------->
+      +-+-+------------------+-+
+mesh  | | |                  | |
+      +-+-+------------------+-+
+
+
+	
+make_mesh()   
+----------- 
+    for (i=0;i<NLAYERS;i++) make_layer(i);
+
+make_layer() 
+------------
+
+    nb_meridian = (lon_max-lon_min)/ plon 
+    for (i=0;i<nb_meridian;i++) make_makeridian(i)
+
+
+make_meridian() 
+---------------
+
+    for (i=lat_min;i<lat_max, i=i+lat_step) {
+         create a new cell
+         double link it with previous one
+    }
+    return first_cell 

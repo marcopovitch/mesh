@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<mesh        lat-unit-size="3" lon-unit-size="3"
+	     lat-min="30" lat-max="87"
+	     lon-min="-42"   lon-max="66">
+<model>	     
+<layer name="layer 0" zstart="0" zend="40" lat-unit="1" lon-unit="1" />
+<layer name="layer 1" zstart="40" zend="100" lat-unit="1" lon-unit="1" />
+<layer name="layer 2" zstart="100" zend="250" lat-unit="1" lon-unit="1" />
+<layer name="layer 3" zstart="250" zend="400" lat-unit="1" lon-unit="1" />
+<layer name="layer 4" zstart="400" zend="650" lat-unit="1" lon-unit="1" />
+<layer name="layer 5" zstart="650" zend="900" lat-unit="1" lon-unit="1" />
+<layer name="layer 6" zstart="900" zend="1200" lat-unit="1" lon-unit="1" />
+<layer name="layer 7" zstart="1200" zend="1500" lat-unit="1" lon-unit="1" />
+</model>
+</mesh>

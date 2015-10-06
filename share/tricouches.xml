@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<mesh    lat-unit-size="1" lon-unit-size="1" 
+	   lat-min="-90" lat-max="90"
+	   lon-min="0"   lon-max="360">
+
+<model>
+    <layer name="layer 1" zstart="0"    zend="2100" lat-unit="10" lon-unit="10"/>
+    <layer name="layer 2" zstart="2100" zend="4200" lat-unit="20" lon-unit="20"/>
+    <layer name="layer 3" zstart="4200" zend="6371" lat-unit="60" lon-unit="60"/>
+</model>
+</mesh>
