@@ -8,15 +8,15 @@ Still usable but written 10 years ago ! Use it only if you know what you are doi
 
 # Compilation
 
-To make all the needed *autotools* files, into the `mesh` directory run:
+To make all the needed *autotools* files, go into the `mesh` directory run:
 
 `glibtoolize -i`
 
 `./autogen.sh`
 
-To configure and install the mesh library in your installation directory $YOUR_PATH, run:
+To configure and install the mesh library in your installation directory $INSTALL_PATH, run:
 
-`./configure --prefix=$YOUR_PATH`
+`./configure --prefix=$INSTALL_PATH`
 
 make install
 
